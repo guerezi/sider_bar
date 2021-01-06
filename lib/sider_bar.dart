@@ -33,14 +33,14 @@ class _SideBarState extends State<SideBar> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     _widgetList = List<Widget>.generate(widget.list.length, (index) {
       return Padding(
         padding: const EdgeInsets.only(bottom: 2.0),
         child: Text(
           widget.list[index],
-          style: TextStyle(color: widget.textColor, fontSize: 14.0),
+          style: TextStyle(color: widget.textColor, fontSize: 14.0, decoration: TextDecoration.none),
         ),
       );
     });
@@ -82,31 +82,28 @@ class _SideBarState extends State<SideBar> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           _isTaped
-              ? Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(
-                      right: MediaQuery.of(context).size.width / 2 - 70 + 15),
-                  width: 70.0,
-                  height: 70.0,
-                  decoration: BoxDecoration(
-                      color: widget.color,
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.all(Radius.circular(5.0))),
-                  child: Text(
-                    _selectStr,
-                    style: Theme.of(context)
-                        .textTheme
-                        .display1
-                        .copyWith(color: widget.textColor),
-                  ),
-                )
-              : SizedBox(),
+            ? Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(
+                    right: MediaQuery.of(context).size.width / 2 - 70 + 15),
+                width: 70.0,
+                height: 70.0,
+                decoration: BoxDecoration(
+                    color: widget.color,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                child: Text(
+                  _selectStr,
+                  style: Theme.of(context).textTheme.headline4.copyWith(color: widget.textColor),
+                ),
+              )
+            : SizedBox(),
           Container(
             padding: EdgeInsets.symmetric(vertical: 8.0),
             decoration: BoxDecoration(
-                color: _isTaped ? widget.color : Colors.transparent,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.all(Radius.circular(15.0))),
+              color: Colors.transparent,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.all(Radius.circular(15.0))),
             width: 26.0,
             child: Column(
               mainAxisSize: MainAxisSize.min,
